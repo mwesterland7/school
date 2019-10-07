@@ -11,11 +11,11 @@ group_by(HRV, Sex) %>%
     count = n(),
     mean = mean(HR, na.rm = TRUE),
     sd = sd(HR, na.rm = TRUE)
-  )
+)
 
 ####PLOTS####
 plot(HRV$rMSSD, HRV$BMI, pch = 16, cex = 1.3, col = "black", xlab = "RMSSD", ylab = "BMI", frame.plot = TRUE)
-  abline(lm(HRV$BMI ~ HRV$rMSSD))
+    abline(lm(HRV$BMI ~ HRV$rMSSD))
 
 ggboxplot(HRV, x = "Sex", y = "HR", 
           color = "Sex", palette = c("#00AFBB", "#E7B800"),
@@ -35,3 +35,5 @@ oneway.test(HR ~ Sex, data = HRV)
 shapiro.test(HRV$rMSSD)
 shapiro.test(HRV$BMI)
 cor.test(HRV$BMI, HRV$rMSSD, method = "pearson")
+
+
