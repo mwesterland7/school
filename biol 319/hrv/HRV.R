@@ -16,6 +16,7 @@ group_by(HRV, Sex) %>%
 ####PLOTS####
 plot(HRV$rMSSD, HRV$BMI, pch = 16, cex = 1.3, col = "black", xlab = "RMSSD", ylab = "BMI", frame.plot = TRUE)
     abline(lm(HRV$BMI ~ HRV$rMSSD))
+    rect(40,0,80,60, col = rgb(0.5,0.5,0.5,1/4))
 
 ggboxplot(HRV, x = "Sex", y = "HR", 
           color = "Sex", palette = c("#00AFBB", "#E7B800"),
@@ -26,6 +27,7 @@ ggline(HRV, x = "Sex", y = "HR",
        add = c("mean_se", "jitter"), 
        order = c("F", "M"),
        ylab = "HR", xlab = "Sex")
+
 
 ggqqplot(HRV$BMI, ylab = "BMI")
 ggqqplot(HRV$rMSSD, ylab = "BMI")
