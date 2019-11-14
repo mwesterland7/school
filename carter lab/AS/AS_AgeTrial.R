@@ -23,6 +23,10 @@ ggdensity(AgeTrialsCompiled$mm,
 
 ggqqplot(AgeTrialsCompiled$mm)
 
+plot(five_dpf$min, five_dpf$mm)
+plot(six_dpf$min, six_dpf$mm)
+plot(seven_dpf$min, seven_dpf$mm)
+
 plot(mm ~ age, data = df)
 
 hist(AgeTrialsCompiled$mm) #data is skewed positive
@@ -41,6 +45,8 @@ resid(pdf) #List of residuals
 plot(density(resid(pdf))) #A density plot
 qqnorm(resid(pdf)) # A quantile normal plot - good for checking normality. we want line to fit across
 qqline(resid(pdf))
+
+shapiro.test(AgeTrialsCompiled$mm)
 
 #### STATS ####
 

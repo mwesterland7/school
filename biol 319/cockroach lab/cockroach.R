@@ -39,3 +39,4 @@ ggplot(data=fast_slow, aes(x=fast_slow$Condition, y=fast_slow$Spikes.Sec)) + sta
 ggplot(data=two, aes(x=two$Experiement, y=two$Spikes.Sec)) + stat_summary(fun.y = mean, geom = "bar") + stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0.3) + labs(x = "condition", y = "spikes per sec")
 
 ggplot(data=cockroach, aes(x=cockroach$Condition, y=cockroach$Spikes.Sec)) + stat_summary(fun.y = mean, geom = "bar") + stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0.3) + labs(x = "cockroach$Condition", y = "cockroach$Spikes.Sec")
+
