@@ -1,3 +1,12 @@
+#### TIDY ####
+survey <- read.csv('survey_with_exclusions.csv')
+
+#2 = female, 1 = male
+
+pdf <- lm(mm ~ age, data = df)  #Create a linear model
+
+
+
 ### MEANS/SUMS ### ----
 # not excluding missing values 
 survey$MAAS_avg <- rowMeans(survey[2:16], na.rm = FALSE)
