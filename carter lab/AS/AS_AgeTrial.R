@@ -23,10 +23,15 @@ dark <- filter(differing_timeintervals, light == 'off')
 five_dpf <- filter(differing_timeintervals, age == "5dpf")
 six_dpf <- filter(differing_timeintervals, age == "6dpf")
 seven_dpf <- filter(differing_timeintervals, age == "7dpf")
+five_dpfLight <- filter(five_dpf, light == "on")
+five_dpfDark <- filter(five_dpf, light == "off")
+six_dpfLight <- filter(six_dpf, light == "on")
+six_dpfDark <- filter(six_dpf, light == "off")
+seven_dpfLight <- filter(seven_dpf, light == "on")
+seven_dpfDark <- filter(seven_dpf, light == "off")
 
 t.test(light$mm_mean, dark$mm_mean)
 
-age <- c(rep("7dpf", 12), rep("6dpf", 12), rep("5dpf", 12))
 mm_mean <- c(seven_dpf$mm_mean, six_dpf$mm_mean, five_dpf$mm_mean)
 df <- data.frame(age, mm_mean)
 
@@ -68,6 +73,7 @@ ggdensity(differing_timeintervals$mm_mean,
           xlab = "movement in millimeters") #very skewed positive
 
 ggqqplot(differing_timeintervals$mm_mean)
+ggqqplot(log(differing_timeintervals$mm_mean)) #logged makes more normally distributed
 
 plot(five_dpf$time, five_dpf$mm_mean)
 plot(six_dpf$time, six_dpf$mm_mean)
@@ -78,11 +84,6 @@ plot(mm_mean ~ age, data = differing_timeintervals)
 
 hist(differing_timeintervals$mm_mean) #data is skewed positive
 hist(log(differing_timeintervals$mm_mean)) #log
-hist(log(log(differing_timeintervals$mm_mean))) #double log WORKS
-hist((differing_timeintervals$mm_mean * differing_timeintervals$mm_mean)) #square
-hist(sqrt(differing_timeintervals$mm_mean)) #sqrt
-hist(log10(differing_timeintervals$mm_mean)) #log10
-hist(cuberoot(differing_timeintervals$mm_mean))
 
 outlier(differing_timeintervals$mm_mean)
 
@@ -106,5 +107,20 @@ summary(AgeTrialsCompiled_aov)
 mean(differing_timeintervals$mm_mean) #681.8195
 median(differing_timeintervals$mm_mean) #436.6685
 
-differing_timeintervals_aov <- aov(mm_mean ~ age, data = differing_timeintervals)
-summary(differing_timeintervals_aov)
+mean(five_dpf$mm_mean)
+mean(six_dpf$mm_mean)
+mean(seven_dpf$mm_mean)
+mean(dark$mm_mean)
+mean(light$mm_mean)
+mean(five_dpfDark$mm_mean)
+mean(five_dpfLight$mm_mean)
+
+wilcox.test(five_dpfDark$mm_mean, five_dpfLight$mm_mean)
+wilcox.test(light$mm_mean, dark$mm_mean)
+
+ks.test(light$mm_mean, dark$mm_mean)
+kruskal.test(light$mm_mean, dark$mm_mean)
+
+cor.test(five_dpfDark$mm_mean, five_dpfLight$mm_mean, method = "spearman") #spearman bc not normally distributed
+
+cor.test(log(five_dpfDark$mm_mean), log(five_dpfLight$mm_mean), method = "pearson") #pearson bc logged for normal distribution
