@@ -1,4 +1,4 @@
-﻿age,min,plate,light,time,n,mm_mean,mm_sem,,,,,,,,,,,,,,,,,,,,,,,
+﻿age,min,plate,light,time,n,mm_mean,mm_sem,velocity,sem (some sort),,,,,,,,,,,,,,,,,,,,,
 5dpf,2.5,Plate 1,on,Start-0:02:30,32,308.136,245.647,,,,,,,,,,,,,,,,,,,,,,,
 5dpf,2.5,Plate 1,off,0:02:30-0:05:00,32,371.163,244.768,,,,,,,,,,,,,,,,,,,,,,,
 5dpf,2.5,Plate 1,on,0:05:00-0:07:30,32,191.565,93.9366,,,,,,,,,,,,,,,,,,,,,,,
