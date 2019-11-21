@@ -10,6 +10,11 @@ differing_timeintervals <- read.csv('differing_timeintervals.csv')
 
 delta <- dark$mm_mean - light$mm_mean
 
+differingTI = differing_timeintervals %>% 
+  select(age, min, plate, light, time, n, mm_mean, mm_sem)
+
+differingTI = differingTI %>% 
+  mutate(delta = delta)
 
 #### age trials compiled tidying ####
 five_dpf <- filter(AgeTrialsCompiled, age == "5dpf")
@@ -20,12 +25,6 @@ light <- filter(AgeTrialsCompiled, min <= 4)
 dark <- filter(AgeTrialsCompiled, min >=5)
 
 #### differing time intervals tidying ####
-if (differing_timeintervals$light == 'on') {
-  light <- filter(differing_timeintervals, light == 'on')
-} else {
-  dark <- filter(differing_timeintervals, light == 'off')
-}
-
 light <- filter(differing_timeintervals, light == 'on')
 dark <- filter(differing_timeintervals, light == 'off')
 five_dpf <- filter(differing_timeintervals, age == "5dpf")

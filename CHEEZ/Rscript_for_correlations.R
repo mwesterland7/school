@@ -13,7 +13,7 @@ cor.test(survey$SSS_TAS,survey$NOMO_sum,method=c('pearson'))
 cor.test(survey$SSS_TAS,survey$SPhours_1,method=c('pearson'))
 #sss_es
 cor.test(survey$SSS_ES,survey$reliance_sum,method=c('pearson')) #r= -.156, p= 0.015
-cor.test(survey$SSS_ES,survey$NOMO_sumccf,method=c('pearson'))
+cor.test(survey$SSS_ES,survey$NOMO_sum,method=c('pearson'))
 cor.test(survey$SSS_ES,survey$SPhours_1,method=c('pearson'))
 #sss_dis
 cor.test(survey$SSS_Dis,survey$reliance_sum,method=c('pearson'))
@@ -29,6 +29,14 @@ cor.test(survey$SSS_BS,survey$SPhours_1,method=c('pearson'))
 cor.test(survey$ADHD_sum,survey$reliance_sum,method=c('pearson')) #r= .352, p= <.001
 cor.test(survey$ADHD_sum,survey$NOMO_sum,method=c('pearson')) #r= .315, p= <.001
 cor.test(survey$ADHD_sum,survey$SPhours_1,method=c('pearson')) #r= .224, p= <.001
+
+cor.test(male$ADHD_sum,male$reliance_sum,method=c('pearson')) #r= .352, p= <.001
+cor.test(male$ADHD_sum,male$NOMO_sum,method=c('pearson')) #r= .315, p= <.001
+cor.test(male$ADHD_sum,male$SPhours_1,method=c('pearson'))
+
+cor.test(female$ADHD_sum,female$reliance_sum,method=c('pearson')) #r= .352, p= <.001
+cor.test(female$ADHD_sum,female$NOMO_sum,method=c('pearson')) #r= .315, p= <.001
+cor.test(female$ADHD_sum,female$SPhours_1,method=c('pearson'))
 
 ### SLEEP ### ----
 #sleep_phone do not use these for analysis

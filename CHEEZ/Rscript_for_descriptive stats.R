@@ -21,6 +21,8 @@ t.test(female$ADHD_sum, male$ADHD_sum, var.equal = FALSE)
 t.test(female$NOMO_sum, male$NOMO_sum, var.equal = FALSE)
 t.test(female$reliance_sum, male$reliance_sum, var.equal = FALSE)
 t.test(female$SSS_sum, male$SSS_sum, var.equal = FALSE)
+t.test(female$SPhours_1, male$SPhours_1, var.equal = FALSE)
+
 
 ### MEAN, MEDIAN, 25th AND 75th QUARTILES, MIN, MAX ### ----
 summary(survey$sleep_hours)
