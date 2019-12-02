@@ -20,8 +20,23 @@ t.test(female$MAAS_avg, male$MAAS_avg, var.equal = FALSE)
 t.test(female$ADHD_sum, male$ADHD_sum, var.equal = FALSE)
 t.test(female$NOMO_sum, male$NOMO_sum, var.equal = FALSE)
 t.test(female$reliance_sum, male$reliance_sum, var.equal = FALSE)
-t.test(female$SSS_sum, male$SSS_sum, var.equal = FALSE)
+t.test(female$SSS_sum, male$SSS_sum, var.equal = FALSE) #p = .008
 t.test(female$SPhours_1, male$SPhours_1, var.equal = FALSE)
+t.test(female$SSS_BS, male$SSS_BS, var.equal = FALSE) #p < .001
+t.test(female$SSS_Dis, male$SSS_Dis, var.equal = FALSE)
+t.test(female$SSS_TAS, male$SSS_TAS, var.equal = FALSE) #p = .01
+t.test(female$SSS_ES, male$SSS_ES, var.equal = FALSE)
+
+hist(female$SSS_sum)
+hist(female$SSS_BS)
+hist(female$SSS_Dis)
+hist(female$SSS_ES)
+hist(female$SSS_TAS)
+hist(male$SSS_sum)
+hist(male$SSS_BS)
+hist(male$SSS_Dis)
+hist(male$SSS_ES)
+hist(male$SSS_TAS)
 
 
 ### MEAN, MEDIAN, 25th AND 75th QUARTILES, MIN, MAX ### ----
