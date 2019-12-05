@@ -22,7 +22,7 @@ six_dpf <- filter(AgeTrialsCompiled, age == "6dpf")
 seven_dpf <- filter(AgeTrialsCompiled, age == "7dpf")
 
 light <- filter(AgeTrialsCompiled, min <= 4)
-dark <- filter(AgeTrialsCompiled, min >=5)
+dark <- filter(AgeTrialsCompiled, min >= 5)
 
 #### differing time intervals tidying ####
 light <- filter(differing_timeintervals, light == 'on')
