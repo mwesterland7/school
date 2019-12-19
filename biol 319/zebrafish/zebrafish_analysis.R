@@ -11,14 +11,6 @@ library('plotrix')
 
 fish <- read.csv("as_data_2019.csv")
 
-control_bu$se <- std.error(control_bu$relative_bu)
-control_move$se <- std.error(control_move$relative_move)
-control_feed$se <- std.error(control_feed$relative_feed)
-
-diff_bu$se <- std.error(diff_bu$relative_bu)
-diff_move$se <- std.error(diff_move$relative_move)
-diff_feed$se <- std.error(diff_feed$relative_feed)
-
 #### tidying ####
 treatment_a <- filter(fish, fish$treatment == "A")
 treatment_b <- filter(fish, fish$treatment == "B")
@@ -43,6 +35,18 @@ control_feed$relative_feed <- control_feed$movement
 control_bu$control <- control_bu$treatment
 control_move$control <- control_move$treatment
 control_feed$control <- control_feed$treatment
+
+#### stats ####
+control_bu$se <- std.error(control_bu$relative_bu)
+control_move$se <- std.error(control_move$relative_move)
+control_feed$se <- std.error(control_feed$relative_feed)
+
+diff_bu$se <- std.error(diff_bu$relative_bu)
+diff_move$se <- std.error(diff_move$relative_move)
+diff_feed$se <- std.error(diff_feed$relative_feed)
+
+manRes1 <- manova(cbind(Y.1, Y.2) ~ IV, data=fish)
+summary(manRes1, test="Wilks")
 
 #### graphing ####
 ggplot(control_bu, aes(control, relative_bu)) +
