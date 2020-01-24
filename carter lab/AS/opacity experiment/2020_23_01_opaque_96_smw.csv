@@ -1,0 +1,9 @@
+﻿opacity,time,n,mean,se
+clear,basal,48,159.895,20.7363
+clear,stimulus1,48,427.06,25.4998
+clear,recovery,48,116.883,15.099
+clear,stimulus2,48,256.919,26.2547
+opaque,basal,48,873.411,237.041
+opaque,stimulus1,48,959.467,176.609
+opaque,recovery,48,1226.71,400.025
+opaque,stimulus2,48,1130.08,309.643
