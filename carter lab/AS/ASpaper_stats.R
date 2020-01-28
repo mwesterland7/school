@@ -11,7 +11,6 @@ fulldf <- read.csv('ASpaper_stats.csv')
 
 opacitydf <- filter(fulldf, experiment == "dwo")
 
-<<<<<<< HEAD
 opacitydf$time.interval <- factor(opacitydf$time.interval, levels=c("Start-0:04:00", "0:04:00-0:08:00", "0:08:00-0:12:00", "0:12:00-0:16:00"))
 
 opaque_mean <- opacitydf %>%
@@ -29,8 +28,3 @@ clear_mean$opacity <- c('clear', 'clear', 'clear', 'clear')
 opacity_means <- rbind(opaque_mean, clear_mean)
 
 ggplot(opacity_means, aes(time.interval, mean, shape = opacity, color = opacity, group = opacity)) + geom_point() + geom_path()
-=======
-opacitydf %>% 
-  group_by(time.interval || opacity) %>%
-  summarize(averaged_time.interval = mean(opacitydf$distance.moved..mm.))
->>>>>>> e81999f06cb51d8be6da93df026dd42505597aad
