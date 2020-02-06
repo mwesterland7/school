@@ -1,0 +1,120 @@
+---
+title: "Math441-Project 1 - Note"
+author: "Dr. Marie-Claire Koissi"
+date: "Fall 2019"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+subtitle: Example of Confidence Interval
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# TASK 4: Example of Confidence / Prediction Interval
+
+This is an example of calculation of confidence interval and prediction interval. We will first use the formula from the note, then we will use Rstudio function **predict**.
+For this example, we will work with the boys data set and use ht2 as independent variable (Not necessarly what you should use in the project).
+
+```{r , echo=TRUE}
+
+#TASK 2
+###################
+# Full regression analysis
+# data =BOYSGROWTHDATA.CSV 
+#Descriptive stat
+# x = ht2
+# y =ht18
+
+library(ggplot2)
+
+BOYSGROWTHDATA<-read.csv("BOYSGROWTHDATA.CSV", header = TRUE)
+attach(BOYSGROWTHDATA)
+par(mfrow=c(1,1))
+ggplot(BOYSGROWTHDATA, aes(x=ht2,y=ht18))+
+  geom_point()
+
+#Regression
+mean(BOYSGROWTHDATA$ht2) 
+lm1<-lm(ht18~ht2, data = BOYSGROWTHDATA)
+summary(lm1)
+```
+
+## TASK 4 (1): Example of Confidence Interval
+
+## TASK 4 (1a): Using Formaula to compute Confidence Interval
+The $100(1-\alpha)\%$ Confidence Interval at the value $x=x^{*}$ is the following
+
+$$ (\hat\beta_0 + \hat\beta_1 * x^{*} ) \pm t_(\alpha/2 ; df) * s\sqrt{\frac{1}{n}+\frac{(x^{*}-\bar{x})}{SS_{xx}}} $$
+For the $95\%$ Confidence Interval for the mean height for 18-year-old boys with height 92 cm at age 2, we have $x^{*}=ht2 = 92$. The R-output gives the following values:
+$$
+\begin{aligned}
+    \hat\beta_0 &= 79.9570 \\
+    \hat\beta_1 &= 1.1205  \\
+    n & = 66 \\  
+    \\
+    s &= \sqrt{\frac{SSE}{(n-2)}}=\sqrt{\frac{1861.30}{(66-2)}}=\sqrt{29.08}=5.3928  \\
+    \\
+    x^{*}-\bar{x} & = 92 - 88.37121
+\end{aligned}
+$$
+The t-score $t_{(0.025 ; 64)}$ can be obtained using a t-table, a calculator [ invT(0.025, 64)], or R-studio as follows:
+
+```{r}
+(qt(.025,3))
+```
+
+```{r , echo=TRUE}
+(SSxx<-sum(ht2^2)-66*(mean(ht2))^2)
+```
+
+$$
+\begin{aligned}
+    t_{(0.025 ; n-2)} & = t_{(0.025 ; 64)}  = -3.182446 \\
+    SS_{xx} & = 716.5953
+\end{aligned}
+$$
+
+Finally, we get the following $95 \% $ confidence interval
+
+$$ 
+\begin{aligned}
+(\hat\beta_0 + \hat\beta_1 * x^{*}) & \pm t_(\alpha/2 ; df) * s\sqrt{\frac{1}{n}+\frac{(x^{*}-\bar{x})}{SS_{xx}}} \\
+\\
+(79.9570 + 1.1205 (92)) & \pm 3.1824 * 5.3928 \sqrt{\frac{1}{66}+\frac{(92 - 88.3712)}{716.5953}}
+\\
+183.043 & \pm 2.24
+\end{aligned}
+$$
+```{r}
+(lowernumber<-183.043 - 2.24)
+(uppernumber<-183.043 + 2.24)
+```
+We get the following $95 \% $ confidence interval for the mean height
+$$ (180.803, 185.283)$$
+## TASK 4 (1b): Using R-studio function predict to compute Confidence Interval
+
+```{r, echo=TRUE}
+BOYSGROWTHDATA<-read.csv("BOYSGROWTHDATA.CSV", header = TRUE)
+attach(BOYSGROWTHDATA)
+lmt2<-lm(ht18~ht2, data = BOYSGROWTHDATA)
+newdata<-data.frame(ht2=92)
+predict.lm(lmt2, newdata, interval = "confidence", level = 0.95)
+```
+## TASK 4 (2): Computing Prediction Interval
+
+## TASK 4 (2a): Using Formaula to compute Prediction Interval
+The $100(1-\alpha)\%$ Prediction Interval at the value $x=x^{*}$ is the following
+
+$$ (\hat\beta_0 + \hat\beta_1 * x^{*}) \pm t_(\alpha/2 ; df) * s\sqrt{1+\frac{1}{n}+\frac{(x^{*}-\bar{x})}{SS_{xx}}} $$
+##TASK 4 (2b): Using R-studio function predict to compute Confidence Interval
+```{r, echo=TRUE}
+BOYSGROWTHDATA<-read.csv("BOYSGROWTHDATA.CSV", header = TRUE)
+attach(BOYSGROWTHDATA)
+lmt2<-lm(ht18~ht2, data = BOYSGROWTHDATA)
+newdata<-data.frame(ht2=92)
+predict.lm(lmt2, newdata, interval = "prediction", level = 0.95)
+```

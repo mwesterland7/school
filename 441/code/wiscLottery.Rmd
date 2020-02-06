@@ -1,0 +1,44 @@
+---
+title: "wiscLottery"
+author: "Maggie Westerland"
+date: "2/6/2020"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Descriptive Statistics
+We are using the data "wiscLottery.csv" and are interested in the relationship between the population (POP) and the number of tickets sold (SALES)
+
+```{r, echo = TRUE}
+wisc_lottery <- read.csv("WiscLottery-1.csv", header = TRUE)
+
+attach(wisc_lottery)
+names(wisc_lottery)
+
+summary(wisc_lottery$SALES)
+summary(SALES)
+
+
+par(mfrow = c(1, 2))
+hist(wisc_lottery$SALES)
+hist(POP)
+
+par(mfrow = c(1, 1))
+plot(POP, SALES)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
