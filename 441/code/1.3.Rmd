@@ -1,0 +1,25 @@
+---
+title: "wiscLottery"
+author: "Maggie Westerland"
+date: "2/11/2020"
+topic: "1.3 - Basic Data Exploration"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1.3 - Basic Data Exploration 
+We are using the data "WiscLottery-1.csv" and are interested in the relationship between the population, zipcode, etc - INDEPENDENT - (POP) and the number of tickets sold - RESPONSE - (SALES)
+
+```{r, echo = TRUE}
+wiscLottery <- read.csv("WiscLottery-1.csv", header = TRUE)
+attach(wiscLottery)
+names(wiscLottery)
+
+```
+
