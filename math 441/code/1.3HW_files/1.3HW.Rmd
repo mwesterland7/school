@@ -1,0 +1,57 @@
+---
+title: '1.3 HW: earthquake'
+group: '4: Ashley and Maggie'
+author: "4: Ashley and Maggie"
+date: "2/11/2020"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## open earthquake
+```{r, echo = TRUE}
+earthquake <- read.table("/Users/maggiewesterland/Desktop/school/441/datasets/EARTHQUAKE.txt", header = TRUE)
+attach(earthquake)
+names(earthquake)
+
+```
+
+minutes - X, magnitude - Y
+
+## summary
+```{r, echo = TRUE}
+summary(MINUTE)
+
+```
+median > mean suggesting a left skewed distribution, however the numbers are close together so a normal distribution is implied
+
+```{r, echo = TRUE}
+summary(MAGNITUDE)
+
+```
+median > mean suggesting a left skewed distribution, however the numbers are close together so a normal distribution is implied
+
+## boxplot
+```{r, echo = TRUE}
+boxplot(MINUTE, horizontal = TRUE)
+
+```
+The boxplot does not indicate any outliers for the minute variable.
+
+```{r, echo = TRUE}
+boxplot(MAGNITUDE, horizontal = TRUE)
+
+```
+The boxplot suggests a lot of variation in the magnitude with one possible outlier at 6.70.
+
+## scatterplot
+```{r, echo = TRUE}
+plot(MAGNITUDE ~ MINUTE)
+
+```
+This is a scatterplot where minutes are denoted by the x-axis and magnitudes are denoted by the y-axis.
+
